@@ -2,8 +2,10 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>PartyScribe for D&amp;D5e</title>
-		
+    <title>PartyScribe: Character List</title>
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+		<script src="renderer.js"></script>
+		<script src="main.js"></script>
       <style>
         body {
         font-family: Arial, Helvetica, sans-serif;
@@ -33,22 +35,26 @@
 		-webkit-user-select: none;
 		-ms-user-select: none;
 		}
+		p:first-child{
+		margin-bottom:10px;
+		font-size:25px;
+		font-weight:bolder;
+		text-decoration:underline;
+		}
+		p:nth-child(2){
+		text-align:left;
+		}
       </style>
   </head>
   <body>
-    <h1>PartyScribe</h1>
-	<p>"I'm just trying to help!", the application says at it suffers.</p>
-      <br /><br />
-	  <button onclick="CharWindow()">Create New Character!</button>
-	  <button onclick="ListEm()">Ping the Character List!</button>
-	  <button onclick="ClearDatabase()">Clear the Database</button>
-	  <button onclick="CharList()">Open the Character List!</button>
-      </form>
-	  <br />
-	  <img src="images/aust.jpg" width=300px style="margin-top:20px;"/>
+	<p id="charCount"></p>
+	  <p id="chars"></p>
   </body>
 
-  <!-- DO NOT REMOVE THIS, START CONFIGURATIONS -->
-  <script src="startConfig.js"> </script>
-  
+  <script>
+    // You can also require other files to run in this process
+      require('./renderer.js')
+	  
+		   ShowList();
+  </script>
 </html>

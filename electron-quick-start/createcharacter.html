@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>PartyScribe: Create New Character</title>
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+		<script src="renderer.js"></script>
+		<script src="main.js"></script>
+      <style>
+          body {
+          font-family: Arial, Helvetica, sans-serif;
+          color:white;
+          background:#36383a;
+		  
+		text-align:center;
+          }
+      </style>
+  </head>
+  <body>
+    <h1>Add New Character!</h1>
+      <br /><br />
+      <form onsubmit="return false">
+          Character Name: <br />
+          <input type="text" placeholder="Aust Liagala" id="characterName"  /> <br />
+          Class: <br />
+          <input type="text" placeholder="Sorcerer" id="characterClass" /><br />
+          Experience Points: <br />
+          <input type="number" placeholder="0" id="characterExp" /><br /><br />
+          <button onclick="CreateChar()">Submit!</button>
+      </form>
+  </body>
+
+  <script>
+    // You can also require other files to run in this process
+      require('./renderer.js')
+  </script>
+</html>
