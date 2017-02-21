@@ -7,6 +7,10 @@ const BrowserWindow = electron.BrowserWindow
 const path = require('path')
 const url = require('url')
 
+// Debug mode. Gives better control and more access in the dev tools console.
+const debug = true; 
+
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
@@ -58,3 +62,42 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function start() {
+    var head = document.getElementsByTagName('head')[0];
+    var script = document.createElement('script');
+    script.innerHTML = require('./renderer.js');
+
+    debug.log(script);
+    head.appendChild(script);
+}
