@@ -9,4 +9,21 @@
 	
 	body {
 		animation: fadein 0.5s;
+		height:100%
+		background: #36383a; /* For browsers that do not support gradients */
+		background: -webkit-linear-gradient(left top, #36383a, #111); /* For Safari 5.1 to 6.0 */
+		background: -o-linear-gradient(left top,#36383a, #111); /* For Opera 11.1 to 12.0 */
+		background: -moz-linear-gradient(left top,#36383a, #111); /* For Firefox 3.6 to 15 */
+		background: linear-gradient(left top,#36383a, #111); /* Standard syntax */
+		margin: 0;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		padding:0 20px;
 	}	
+
+	.field {
+		border-radius:5px;
+		border-style:solid;
+		padding:3px;
+		box-shadow:0px 0px 5px black;
+	}
