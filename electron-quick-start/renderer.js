@@ -10,6 +10,16 @@ const path = require('path');
 const url = require('url')
 
 
+function BasicChars(){
+	dnd.newCharacter("Aust Liagala", "Sorcerer", "900", "3");
+	dnd.newCharacter("Loudmouth", "Druid", "900", "3");
+	dnd.newCharacter("Yamine", "Rogue", "900", "3");
+	dnd.newCharacter("Sheila", "Rogue", "900", "3");
+	dnd.newCharacter("Karrag", "Fighter", "900", "3");
+	// apparently these characters do weird shit to the ListEm() function, which prints them in the console.
+	// HOWEVER, they do show up instantly in the thing.
+}
+
 var CreateChar = function () {
     var characterName = document.getElementById("characterName").value;
     var characterClass = document.getElementById("characterClass").value;
@@ -27,9 +37,16 @@ var CreateChar = function () {
 	else {
 		var charWindow = remote.getCurrentWindow();
 		dnd.newCharacter(characterName, characterClass, characterExp, characterLevel);
-		alert(characterName + " the " + characterClass + ", level "+characterLevel+" ("+characterExp+").");
+		var latestID = LatestCharacterID();
+		alert(characterName + " the " + characterClass + ", level "+characterLevel+" ("+characterExp+") was added to the database!"+ " ID:"+latestID);
 		charWindow.close();
 	}
+}
+
+function LatestCharacterID(){
+	var i = (dnd.getCharacters().length-1);
+	var selChar = dnd.getCharacters()[i];
+	return selChar.charID;
 }
 
 function ExpCheck(){
@@ -139,20 +156,20 @@ function ClearDatabase(){
 	//Makes the user confirm to kill the babies.
 }
 
-
+/* THE SINNER THE SINNER THE SINNER THE SINNER
 let notificate = new Notification('Reee', {
   body: 'Sad',
   icon: path.join(__dirname, 'images/sadree.jpg')
 })
-
+*/
 
 
 
 	function CharWindow() {
 	  const remote = require('electron').remote;
 	  const BrowserWindow = remote.BrowserWindow;
-
-	  var characterWindow = new BrowserWindow({ width: 400, height: 500, resizable: false, icon:'./images/favicon.ico' });
+	  
+	  var characterWindow = new BrowserWindow({backgroundColor:'#36383a', width: 400, height: 500, resizable: false, icon:'./images/favicon.ico' });
 	  characterWindow.setMenu(null);
 	   characterWindow.loadURL(url.format({
 		   pathname: path.join(__dirname, 'createcharacter.html'),
@@ -163,13 +180,13 @@ let notificate = new Notification('Reee', {
 	  function CharList() {
 	  const remote = require('electron').remote;
 	  const BrowserWindow = remote.BrowserWindow;
-
-	  var listWindow = new BrowserWindow({ width: 400, height: 500, resizable: false, icon:'./images/favicon.ico' });
+	  
+	  var listWindow = new BrowserWindow({backgroundColor:'#36383a', width: 400, height: 500, resizable: false, icon:'./images/favicon.ico' });
 	  listWindow.setMenu(null);
 	   listWindow.loadURL(url.format({
 		   pathname: path.join(__dirname, 'characterlist.html'),
 		   protocol: 'file:',
 		   slashes: true
 		   }));
-
+		   
 	  }
