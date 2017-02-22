@@ -61,31 +61,6 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
-	function CharWindow() {
-	  const remote = require('electron').remote;
-	  const BrowserWindow = remote.BrowserWindow;
-	  
-	  var characterWindow = new BrowserWindow({ width: 400, height: 500, resizable: false, icon:'./images/favicon.ico' });
-	  characterWindow.setMenu(null);
-	   characterWindow.loadURL(url.format({
-		   pathname: path.join(__dirname, 'createcharacter.html'),
-		   protocol: 'file:',
-		   slashes: true
-		   }));
-	  }
-	  function CharList() {
-	  const remote = require('electron').remote;
-	  const BrowserWindow = remote.BrowserWindow;
-	  
-	  var listWindow = new BrowserWindow({ width: 400, height: 500, resizable: false, icon:'./images/favicon.ico' });
-	  listWindow.setMenu(null);
-	   listWindow.loadURL(url.format({
-		   pathname: path.join(__dirname, 'characterlist.html'),
-		   protocol: 'file:',
-		   slashes: true
-		   }));
-		   
-	  }
 
 
 

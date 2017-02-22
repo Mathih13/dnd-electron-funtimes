@@ -5,7 +5,8 @@
 
 const dnd = require('dnd-module');
 const remote = require('electron').remote;
-
+const path = require('path')
+const url = require('url')
 
 var CreateChar = function () {
     var characterName = document.getElementById("characterName").value;
@@ -135,3 +136,31 @@ function ClearDatabase(){
 	}
 	//Makes the user confirm to kill the babies.
 }
+
+	function CharWindow() {
+	  const remote = require('electron').remote;
+	  const BrowserWindow = remote.BrowserWindow;
+	  
+	  var characterWindow = new BrowserWindow({ width: 400, height: 500, resizable: false, icon:'./images/favicon.ico' });
+	  characterWindow.setMenu(null);
+	   characterWindow.loadURL(url.format({
+		   pathname: path.join(__dirname, 'createcharacter.html'),
+		   protocol: 'file:',
+		   slashes: true
+		   }));
+	  }
+	  function CharList() {
+	  const remote = require('electron').remote;
+	  const BrowserWindow = remote.BrowserWindow;
+	  
+	  var listWindow = new BrowserWindow({ width: 400, height: 500, resizable: false, icon:'./images/favicon.ico' });
+	  listWindow.setMenu(null);
+	   listWindow.loadURL(url.format({
+		   pathname: path.join(__dirname, 'characterlist.html'),
+		   protocol: 'file:',
+		   slashes: true
+		   }));
+		   
+	  }
+
+
