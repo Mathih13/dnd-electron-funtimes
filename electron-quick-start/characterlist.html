@@ -33,18 +33,25 @@
 		-webkit-user-select: none;
 		-ms-user-select: none;
 		}
-		p:first-child{
+		#charCount{
 		margin-bottom:10px;
 		font-size:25px;
 		font-weight:bolder;
 		text-decoration:underline;
 		}
-		p:nth-child(2){
+		#chars{
 		text-align:left;
 		}
       </style>
   </head>
-  <body>
+  <body><br/>
+	<form>
+	<input type="radio" id="searchNames" name="searchType" value="Name" checked>Name
+	<input type="radio" id="searchIDs" name="searchType" value="ID">ID<br/>
+	Search for: <input type="text" id="searchValue" name="searchValue" style="width:50px;">
+	</form>
+	<button id="searchButton" onclick="BasicSearch()">Search</button><br/>
+	<button onclick="ShowList()">List All Characters</button><br/>
 	<p id="charCount"></p>
 	  <p id="chars"></p>
   </body>
@@ -53,7 +60,7 @@
     // You can also require other files to run in this process
       require('./renderer.js')
 	  
-		   ShowList();
+		   //ShowList();
 		   
   </script>
   

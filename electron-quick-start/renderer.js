@@ -132,7 +132,7 @@ function ListEm(){
 	//This finds out how many different characters there are in the current database and then tells the console "There are x amount of characters."
 	for (var i=0;i<charAmount;i++){
 		var selChar = dnd.getCharacters()[i];
-		console.log((i+1) + ". " + selChar.charName + " the " + selChar.charClass + ", level " + selChar.level +" ("+selChar.xp+").");
+		console.log((i+1) + ". "+selChar.charID+": "+ selChar.charName + " the " + selChar.charClass + ", level " + selChar.level +" ("+selChar.xp+").");
 	}
 	//This for-loop lists all the different characters in the format of "x. Name the Class, level y (xp)."
 	//and continues until there are no more characters to mention.
@@ -141,10 +141,48 @@ function ListEm(){
 function ShowList() {
 	var charAmount = dnd.getCharacters().length;
 	document.getElementById("charCount").innerHTML = "There are "+charAmount+" characters!";
+	document.getElementById("chars").innerHTML = "";
 	//Shows the list to a <p>-tag in the html-document in a list.
 	for (var i=0;i<charAmount;i++){
 		var selChar = dnd.getCharacters()[i];
 		document.getElementById("chars").innerHTML += (i+1) + ". " + selChar.charName + " the " + selChar.charClass + ", level " + selChar.level +" ("+selChar.xp+"). </br>";
+	}
+}
+
+function BasicSearch(){
+	var charSearch = document.getElementById("searchValue").value;
+	if (!charSearch) {
+		alert("You have to enter a search term!");
+		return;
+	}
+	else {
+		if (document.getElementById("searchNames").checked == true) {
+			var selChar = dnd.getCharacterByName(charSearch);
+			if (!selChar){
+				document.getElementById("charCount").innerHTML = "Found no character named "+charSearch+". :(";
+				document.getElementById("chars").innerHTML = "";
+				return;
+			}
+			else {
+				document.getElementById("charCount").innerHTML = "Character found!";
+				document.getElementById("chars").innerHTML = "Found "+selChar.charID+": "+selChar.charName + " the " + selChar.charClass + ", level " + selChar.level +" ("+selChar.xp+").";
+			}
+		}
+		else if (document.getElementById("searchIDs").checked == true) {
+				var selChar = dnd.getCharacterByID(charSearch);
+			if (!selChar){
+				document.getElementById("charCount").innerHTML = "Found no character with ID "+charSearch+". :(";
+				document.getElementById("chars").innerHTML = "";
+				return;
+			}
+			else {
+				document.getElementById("charCount").innerHTML = "Character found!";
+				document.getElementById("chars").innerHTML = "Found "+selChar.charID+": "+selChar.charName + " the " + selChar.charClass + ", level " + selChar.level +" ("+selChar.xp+").";
+			}
+		}
+		else {
+			alert("Edo is an idiot");
+		}
 	}
 }
 
@@ -181,12 +219,14 @@ let notificate = new Notification('Reee', {
 	  const remote = require('electron').remote;
 	  const BrowserWindow = remote.BrowserWindow;
 	  
-	  var listWindow = new BrowserWindow({backgroundColor:'#36383a', width: 400, height: 500, resizable: false, icon:'./images/favicon.ico' });
+	  var listWindow = new BrowserWindow({backgroundColor:'#36383a', width: 800, height: 500, resizable: false, icon:'./images/favicon.ico' });
 	  listWindow.setMenu(null);
 	   listWindow.loadURL(url.format({
 		   pathname: path.join(__dirname, 'characterlist.html'),
 		   protocol: 'file:',
 		   slashes: true
 		   }));
+		   
+		   listWindow.webContents.openDevTools()
 		   
 	  }
