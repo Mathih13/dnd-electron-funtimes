@@ -5,14 +5,15 @@
 
 const dnd = require('dnd-module');
 const remote = require('electron').remote;
-
+const main = remote.require('./main.js');
+const path = require('path');
 
 var CreateChar = function () {
     var characterName = document.getElementById("characterName").value;
     var characterClass = document.getElementById("characterClass").value;
 	var characterExp = ExpCheck();
 	var characterLevel = LevelCheck();
-	
+
 	if (characterName === "") {
 		alert("There is no character name!");
 		return;
@@ -135,3 +136,8 @@ function ClearDatabase(){
 	}
 	//Makes the user confirm to kill the babies.
 }
+
+let notificate = new Notification('Reee', {
+  body: 'Sad',
+  icon: path.join(__dirname, 'images/sadree.jpg')
+})
