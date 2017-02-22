@@ -9,6 +9,9 @@ const main = remote.require('./main.js');
 const path = require('path');
 const url = require('url')
 
+function filthyCapitalists(str){
+	return str.substr(0,1).toUpperCase() + str.substr(1);
+}
 
 function BasicChars(){
 	dnd.newCharacter("Aust Liagala", "Sorcerer", "900", "3");
@@ -21,8 +24,8 @@ function BasicChars(){
 }
 
 var CreateChar = function () {
-    var characterName = document.getElementById("characterName").value;
-    var characterClass = document.getElementById("characterClass").value;
+    var characterName = filthyCapitalists(document.getElementById("characterName").value);
+    var characterClass = filthyCapitalists(document.getElementById("characterClass").value);
 	var characterExp = ExpCheck();
 	var characterLevel = LevelCheck();
 
@@ -157,15 +160,38 @@ function BasicSearch(){
 	}
 	else {
 		if (document.getElementById("searchNames").checked == true) {
-			var selChar = dnd.getCharacterByName(charSearch);
-			if (!selChar){
+			var listChars = dnd.getCharacterByName(charSearch);
+			if (!listChars){
 				document.getElementById("charCount").innerHTML = "Found no character named "+charSearch+". :(";
 				document.getElementById("chars").innerHTML = "";
 				return;
 			}
-			else {
+			/*else {
+				document.getElementById("chars").innerHTML = "";
+				var charAmount = listChars.length;
+				console.log(charAmount);
 				document.getElementById("charCount").innerHTML = "Character found!";
-				document.getElementById("chars").innerHTML = "Found "+selChar.charID+": "+selChar.charName + " the " + selChar.charClass + ", level " + selChar.level +" ("+selChar.xp+").";
+				for(var i=0;i<charAmount;i++){
+					console.log("found "+i);
+					var selChar = listChars[i];
+					document.getElementById("chars").innerHTML += "Found "+selChar.charID+": "+selChar.charName + " the " + selChar.charClass + ", level " + selChar.level +" ("+selChar.xp+"). <br/>";
+				}
+			}*/
+			else {
+				document.getElementById("chars").innerHTML = "";
+				var charAmount = listChars.length;
+				console.log(charAmount);
+				document.getElementById("charCount").innerHTML = "Character found!";
+				if (listChars.length >= 1) {
+					for(var i=0;i<charAmount;i++){
+						console.log("found "+i);
+						var selChar = listChars[i];
+						document.getElementById("chars").innerHTML += "Found "+selChar.charID+": "+selChar.charName + " the " + selChar.charClass + ", level " + selChar.level +" ("+selChar.xp+"). <br/>";
+					}
+				}
+				else {
+						document.getElementById("chars").innerHTML += "Found "+listChars.charID+": "+listChars.charName + " the " + listChars.charClass + ", level " + listChars.level +" ("+listChars.xp+"). <br/>";
+				}
 			}
 		}
 		else if (document.getElementById("searchIDs").checked == true) {
@@ -176,6 +202,7 @@ function BasicSearch(){
 				return;
 			}
 			else {
+				document.getElementById("chars").innerHTML = "";
 				document.getElementById("charCount").innerHTML = "Character found!";
 				document.getElementById("chars").innerHTML = "Found "+selChar.charID+": "+selChar.charName + " the " + selChar.charClass + ", level " + selChar.level +" ("+selChar.xp+").";
 			}

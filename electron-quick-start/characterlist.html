@@ -45,12 +45,12 @@
       </style>
   </head>
   <body><br/>
-	<form>
+	<form onsubmit="return false">
 	<input type="radio" id="searchNames" name="searchType" value="Name" checked>Name
 	<input type="radio" id="searchIDs" name="searchType" value="ID">ID<br/>
 	Search for: <input type="text" id="searchValue" name="searchValue" style="width:50px;">
+	<input type="submit" value="Search" id="searchButton" onclick="BasicSearch()" /><br/><br/>
 	</form>
-	<button id="searchButton" onclick="BasicSearch()">Search</button><br/>
 	<button onclick="ShowList()">List All Characters</button><br/>
 	<p id="charCount"></p>
 	  <p id="chars"></p>
