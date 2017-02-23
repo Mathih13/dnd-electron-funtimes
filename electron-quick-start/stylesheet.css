@@ -6,7 +6,7 @@
 			opacity:1;
 		}
 	}
-	
+
 	body {
 		animation: fadein 0.5s;
 		height:100%
@@ -19,11 +19,16 @@
 		background-repeat: no-repeat;
 		background-attachment: fixed;
 		padding:0 20px;
-	}	
+	}
 
 	.field {
 		border-radius:5px;
 		border-style:solid;
 		padding:3px;
 		box-shadow:0px 0px 5px black;
+	}
+
+
+	button {
+		color: #333;
 	}

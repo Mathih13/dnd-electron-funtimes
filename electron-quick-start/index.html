@@ -3,21 +3,24 @@
   <head>
     <meta charset="UTF-8">
     <title>PartyScribe for D&amp;D5e</title>
-	<link href="stylesheet.css" type="text/css" rel="stylesheet" >
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" rel="stylesheet" >
+  <link href="stylesheet.css" type="text/css" rel="stylesheet" >
       <style>
+
         body {
         font-family: Arial, Helvetica, sans-serif;
         color:white;
 		text-align:center;
+
         }
 		p{
-		user-drag: none; 
+		user-drag: none;
 		user-select: none;
 		-moz-user-select: none;
 		-webkit-user-drag: none;
 		-webkit-user-select: none;
 		-ms-user-select: none;}
-		h1{user-drag: none; 
+		h1{user-drag: none;
 		user-select: none;
 		-moz-user-select: none;
 		-webkit-user-drag: none;
@@ -25,7 +28,7 @@
 		-ms-user-select: none;
 		}
 		img {
-		user-drag: none; 
+		user-drag: none;
 		user-select: none;
 		-moz-user-select: none;
 		-webkit-user-drag: none;
@@ -48,7 +51,17 @@
 	  <img src="images/aust.jpg" width=250px style="margin-top:20px;"/>
   </body>
 
+  <!-- Jquery import stuff  -->
+  <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+
   <!-- DO NOT REMOVE THIS, START CONFIGURATIONS -->
   <script src="startConfig.js"> </script>
-  
+  <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+  <!-- Insert this line after script imports -->
+  <script>if (window.module) module = window.module;</script>
+
 </html>

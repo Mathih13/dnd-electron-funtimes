@@ -14,7 +14,7 @@ let mainWindow
 
 function createWindow () {
   // Create the browser window.
-    mainWindow = new BrowserWindow({ width: 600, height: 600, resizable: false, icon:'./images/favicon.ico'})
+    mainWindow = new BrowserWindow({ width: 600, height: 600, resizable: true, icon:'./images/favicon.ico', show: false})
     mainWindow.setMenu(null);
 
   //mainWin.loadURL(`file://${__dirname}/index.html`);
@@ -25,8 +25,12 @@ function createWindow () {
     slashes: true
   }))
 
+  mainWindow.once('ready-to-show', () => {
+    mainWindow.show()
+  })
+
   // Open the DevTools.
-  mainWindow.webContents.openDevTools()
+  //mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
@@ -66,7 +70,7 @@ app.on('activate', function () {
 	/*function CharWindow() {
 	  const remote = require('electron').remote;
 	  const BrowserWindow = remote.BrowserWindow;
-	  
+
 	  var characterWindow = new BrowserWindow({ width: 400, height: 500, resizable: false, icon:'./images/favicon.ico' });
 	  characterWindow.setMenu(null);
 	   characterWindow.loadURL(url.format({
@@ -78,7 +82,7 @@ app.on('activate', function () {
 	  function CharList() {
 	  const remote = require('electron').remote;
 	  const BrowserWindow = remote.BrowserWindow;
-	  
+
 	  var listWindow = new BrowserWindow({ width: 400, height: 500, resizable: false, icon:'./images/favicon.ico' });
 	  listWindow.setMenu(null);
 	   listWindow.loadURL(url.format({
@@ -86,7 +90,7 @@ app.on('activate', function () {
 		   protocol: 'file:',
 		   slashes: true
 		   }));
-		   
+
 	  }*/
 
 
